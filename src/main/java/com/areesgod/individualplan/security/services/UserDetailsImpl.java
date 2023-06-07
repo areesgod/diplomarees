@@ -23,15 +23,17 @@ public class UserDetailsImpl implements UserDetails {
   @JsonIgnore
   private String password;
 
+  private Integer status;
   private Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+      Collection<? extends GrantedAuthority> authorities,Integer status) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.authorities = authorities;
+    this.status = status;
   }
 
   public static UserDetailsImpl build(User user) {
@@ -44,7 +46,8 @@ public class UserDetailsImpl implements UserDetails {
         user.getUsername(), 
         user.getEmail(),
         user.getPassword(), 
-        authorities);
+        authorities,
+            user.getStatus());
   }
 
   @Override
@@ -69,6 +72,7 @@ public class UserDetailsImpl implements UserDetails {
   public String getUsername() {
     return username;
   }
+  public Integer getStatus(){return status;}
 
   @Override
   public boolean isAccountNonExpired() {

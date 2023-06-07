@@ -19,6 +19,7 @@ public class EducationTable {
     private String flecture;
     private String poffice;
     private String foffice;
+
     public EducationTable(){}
 
     public int getId() {

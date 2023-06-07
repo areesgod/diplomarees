@@ -7,13 +7,23 @@ public class JwtResponse {
     private String username;
     private String email;
     private List<String> roles;
+    private Integer status;
 
-    public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, Integer status) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
         this.email = email;
         this.roles = roles;
+        this.status = status;
     }
 
     public String getAccessToken() {

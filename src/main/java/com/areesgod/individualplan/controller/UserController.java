@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user/")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -35,10 +36,7 @@ public class UserController {
         Optional<User> userData = userRepository.findById(id);
         if(userData.isPresent()){
             User _user = userData.get();
-            _user.setRoles(user.getRoles());
-            _user.setEmail(user.getEmail());
-            _user.setUsername(user.getUsername());
-            _user.setPassword(user.getPassword());
+            _user.setStatus(user.getStatus());
             return new ResponseEntity<>(userRepository.save(_user),HttpStatus.OK);
         } else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -3,6 +3,7 @@ package com.areesgod.individualplan.model;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +31,15 @@ public class User {
   @NotBlank
   @Size(max = 120)
   private String password;
+  private Integer status = -1;
+
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
+  }
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "user_roles", 
